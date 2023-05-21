@@ -8,8 +8,18 @@ class SplashWidge extends StatefulWidget {
 }
 
 class _SplashWidgeState extends State<SplashWidge> {
+  bool showAds = false;
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    debugPrint('Splash Init...');
+    return Stack(
+      children: <Widget>[
+        Offstage(offstage: showAds, child: Container()),
+        Offstage(
+          child: Container(),
+        )
+      ],
+    );
   }
 }
