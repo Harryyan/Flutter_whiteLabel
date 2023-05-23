@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:white_label_project/pages/splash/splash_widget.dart';
 
 void main() {
   runApp(const WhiteLabelApp());
@@ -12,6 +13,6 @@ class WhiteLabelApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.blue),
-        home: Scaffold(body: Container()));
+        home: Scaffold(body: SplashWidget()));
   }
 }
