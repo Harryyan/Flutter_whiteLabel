@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../constant/constant.dart';
 import '../../helpers/ScreenSizeConfig.dart';
-import '../../widgets.dart';
+import '../../widgets/countdown.dart';
 import 'container/container_page.dart';
 
 class SplashWidget extends StatefulWidget {
