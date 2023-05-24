@@ -13,6 +13,6 @@ class WhiteLabelApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.blue),
-        home: Scaffold(body: SplashWidget()));
+        home: const Scaffold(body: SplashWidget()));
   }
 }
