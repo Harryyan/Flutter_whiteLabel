@@ -19,7 +19,7 @@ class _ContainerPageState extends State<ContainerPage> {
   List<Widget> pages = [];
   List<BottomNavigationBarItem> itemList = [];
 
-  final defaultItemColor = Color.fromARGB(255, 125, 125, 125);
+  final defaultItemColor = const Color.fromARGB(255, 125, 125, 125);
 
   final tabItems = [
     _TabItem('Home', 'assets/images/ic_tab_home_active.png',
@@ -83,7 +83,7 @@ class _ContainerPageState extends State<ContainerPage> {
           _getPagesWidget(4)
         ],
       ),
-      backgroundColor: Color.fromARGB(255, 248, 248, 248),
+      backgroundColor: Color.fromARGB(255, 247, 247, 247),
       bottomNavigationBar: BottomNavigationBar(
         items: itemList,
         onTap: (int index) {
@@ -93,7 +93,7 @@ class _ContainerPageState extends State<ContainerPage> {
         },
         iconSize: 24,
         currentIndex: _currentIndex,
-        fixedColor: Color.fromARGB(255, 0, 188, 96),
+        fixedColor: Color.fromARGB(255, 1, 47, 25),
         type: BottomNavigationBarType.fixed,
       ),
     );

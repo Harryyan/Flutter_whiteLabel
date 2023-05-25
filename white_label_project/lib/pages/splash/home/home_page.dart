@@ -10,7 +10,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final _tabs = <String>["Tab 1", "Tab 2"];
+  final _tabs = <String>['Tab1', 'Tab2'];
+  final Map<String, IconData> _icons = const {
+    'Tab1': Icons.home,
+    'Tab2': Icons.hotel
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -36,27 +40,33 @@ class _HomePageState extends State<HomePage> {
                 flexibleSpace: FlexibleSpaceBar(
                   collapseMode: CollapseMode.pin,
                   background: Container(
-                    color: Colors.green,
+                    color: Colors.blue,
                     child: SearchTextFieldWidget(
-                      hintText: '影视作品中你难忘的离别',
-                      margin: const EdgeInsets.only(left: 15.0, right: 15.0),
+                      hintText: 'Search Placeholder...',
+                      margin: const EdgeInsets.only(
+                          left: 15.0, right: 15.0, bottom: 30.0),
                       onTab: () {
                         // MyRouter.push(context, MyRouter.searchPage, '影视作品中你难忘的离别');
                       },
                     ),
-                    alignment: Alignment(0.0, 0.0),
+                    alignment: const Alignment(0.0, 0.0),
                   ),
                 ),
                 bottom: TabBar(
-                  tabs: _tabs
-                      .map((String name) => Container(
-                            child: Text(
-                              name,
-                            ),
-                            padding: const EdgeInsets.only(bottom: 5.0),
-                          ))
-                      .toList(),
-                ),
+                    indicatorColor: Colors.white,
+                    tabs: _tabs
+                        // .map((String name) => Container(
+                        //       child: Text(
+                        //         name,
+                        //       ),
+                        //       padding: const EdgeInsets.only(bottom: 5.0),
+                        //     ))
+                        // .toList(),
+                        .map((name) => Tab(
+                              text: name,
+                              icon: Icon(_icons[name]),
+                            ))
+                        .toList()),
               ),
             ),
           ];

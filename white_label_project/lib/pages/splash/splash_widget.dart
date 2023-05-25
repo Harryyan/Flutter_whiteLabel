@@ -24,7 +24,7 @@ class _SplashWidgeState extends State<SplashWidget> {
         Offstage(offstage: showAds, child: container),
         Offstage(
           child: Container(
-            color: Colors.white,
+            color: Colors.grey,
             child: Stack(
               children: <Widget>[
                 Align(
@@ -88,7 +88,7 @@ class _SplashWidgeState extends State<SplashWidget> {
                             child: Text(
                               'Hi,豆芽',
                               style: TextStyle(
-                                  color: Colors.green,
+                                  color: Colors.blue,
                                   fontSize: 30.0,
                                   fontWeight: FontWeight.bold),
                             ),
