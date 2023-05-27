@@ -11,9 +11,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _tabs = <String>['Tab1', 'Tab2'];
-  final Map<String, IconData> _icons = const {
+  final Map<String, IconData> _icons = {
     'Tab1': Icons.home,
-    'Tab2': Icons.hotel
+    'Tab2': Icons.supervised_user_circle
   };
 
   @override
@@ -23,11 +23,10 @@ class _HomePageState extends State<HomePage> {
 
   DefaultTabController getTabController() {
     return DefaultTabController(
-      initialIndex: 1,
-      length: _tabs.length, // This is the number of tabs.
+      initialIndex: 0,
+      length: _tabs.length,
       child: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          // These are the slivers that show up in the "outer" scroll view.
           return <Widget>[
             SliverOverlapAbsorber(
               handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
@@ -41,30 +40,23 @@ class _HomePageState extends State<HomePage> {
                   collapseMode: CollapseMode.pin,
                   background: Container(
                     color: Colors.blue,
+                    alignment: const Alignment(0.0, 0.0),
                     child: SearchTextFieldWidget(
                       hintText: 'Search Placeholder...',
                       margin: const EdgeInsets.only(
                           left: 15.0, right: 15.0, bottom: 30.0),
                       onTab: () {
-                        // MyRouter.push(context, MyRouter.searchPage, '影视作品中你难忘的离别');
+                        // MyRouter.push(context, MyRouter.searchPage, '...');
                       },
                     ),
-                    alignment: const Alignment(0.0, 0.0),
                   ),
                 ),
                 bottom: TabBar(
                     indicatorColor: Colors.white,
                     tabs: _tabs
-                        // .map((String name) => Container(
-                        //       child: Text(
-                        //         name,
-                        //       ),
-                        //       padding: const EdgeInsets.only(bottom: 5.0),
-                        //     ))
-                        // .toList(),
                         .map((name) => Tab(
                               text: name,
-                              icon: Icon(_icons[name]),
+                              icon: Icon(_icons[name] as IconData),
                             ))
                         .toList()),
               ),
