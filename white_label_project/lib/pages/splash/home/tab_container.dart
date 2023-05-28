@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../data_source/API.dart';
 import '../../../models/subject_entity.dart';
 
 class TabContainer extends StatefulWidget {
@@ -12,17 +13,24 @@ class TabContainer extends StatefulWidget {
 }
 
 class _TabContainerState extends State<TabContainer> {
-  late List<Subject> list;
+  List<Subject> list = [];
   String? name;
+  var api = API();
 
   @override
   void initState() {
     super.initState();
+
+    fetchAllMovies();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
         color: widget.name == 'Tab1' ? Colors.green : Colors.yellow);
+  }
+
+  void fetchAllMovies() {
+    api.fetchFirst50Moveis();
   }
 }
