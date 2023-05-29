@@ -35,11 +35,6 @@ class API {
 
   // Only show first 50 for now.
   Future<dynamic> fetchFirst50Movies() async {
-    // var header = {
-    //   "Access-Control-Allow-Origin": "*",
-    //   'Content-Type': 'application/json',
-    //   'Accept': '*/*'
-    // };
     var response = await _request.get(ALL_MOVIES);
     List<Subject> results = response
         .map<Subject>((item) => Subject.fromMap(item))
