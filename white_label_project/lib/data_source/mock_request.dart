@@ -4,17 +4,17 @@ import 'dart:convert';
 
 import 'API.dart';
 
-///模拟数据
+/// fake data
 class MockRequest {
-  Future<dynamic> get(String action, {required Map params}) async {
+  Future<dynamic> get(String action, {Map? params}) async {
     return mock(action: getJsonName(action), params: params);
   }
 
-  Future<dynamic> post({required String action, required Map params}) async {
+  Future<dynamic> post({required String action, Map? params}) async {
     return mock(action: action, params: params);
   }
 
-  Future<dynamic> mock({required String action, required Map params}) async {
+  Future<dynamic> mock({required String action, Map? params}) async {
     var responseStr = await rootBundle.loadString('mock/$action.json');
     var responseJson = json.decode(responseStr);
     return responseJson;
