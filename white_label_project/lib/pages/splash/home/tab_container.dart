@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:white_label_project/models/home_entity.dart';
 
+import '../../../constant/constant.dart';
 import '../../../data_source/API.dart';
 import '../../../data_source/mock_request.dart';
 import '../../../models/subject_entity.dart';
@@ -15,7 +16,7 @@ class TabContainer extends StatefulWidget {
 }
 
 class _TabContainerState extends State<TabContainer> {
-  List<Subject> list = [];
+  List<Movie> list = [];
   String? name;
   var api = API();
 
@@ -30,8 +31,27 @@ class _TabContainerState extends State<TabContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        color: widget.name == 'Tab1' ? Colors.green : Colors.yellow);
+    return SafeArea(
+      top: false,
+      bottom: false,
+      child: Builder(builder: (BuildContext context) {
+        return CustomScrollView(
+          physics: const BouncingScrollPhysics(),
+          key: PageStorageKey<String>(widget.name),
+          slivers: <Widget>[
+            SliverOverlapInjector(
+              // This is the flip side of the SliverOverlapAbsorber above.
+              handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+            ),
+            SliverList(
+                delegate: SliverChildBuilderDelegate(
+                    ((BuildContext context, int index) {
+              return _getContent(list, index);
+            }), childCount: list.length)),
+          ],
+        );
+      }),
+    );
   }
 
   void fetchAllMovies() async {
@@ -41,5 +61,104 @@ class _TabContainerState extends State<TabContainer> {
     list = resultList.map<Movie>((item) => Movie.fromMap(item)).toList();
 
     setState(() {});
+  }
+
+  double singleLineImgHeight = 180.0;
+  double contentVideoHeight = 350.0;
+
+  // _getItemCenterImg(Movie item) {
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //     children: <Widget>[
+  //       Expanded(
+  //         child: RadiusImg.get(item.images.large, null,
+  //             shape: RoundedRectangleBorder(
+  //               borderRadius: BorderRadius.only(
+  //                   topLeft: Radius.circular(5.0),
+  //                   bottomLeft: Radius.circular(5.0)),
+  //             )),
+  //       ),
+  //       Expanded(
+  //         child: RadiusImg.get(item.casts[1].avatars.medium, null, radius: 0.0),
+  //       ),
+  //       Expanded(
+  //         child: RadiusImg.get(item.casts[2].avatars.medium, null,
+  //             shape: RoundedRectangleBorder(
+  //                 borderRadius: BorderRadius.only(
+  //                     topRight: Radius.circular(5.0),
+  //                     bottomRight: Radius.circular(5.0)))),
+  //       )
+  //     ],
+  //   );
+  // }
+
+  Widget _getContent(List<Movie> items, int index) {
+    Movie item = items[index];
+    return Container(
+      height: singleLineImgHeight,
+      color: Colors.white,
+      margin: const EdgeInsets.only(bottom: 10.0),
+      padding: const EdgeInsets.only(
+          left: Constant.MARGIN_LEFT,
+          right: Constant.MARGIN_RIGHT,
+          top: Constant.MARGIN_RIGHT,
+          bottom: 10.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              CircleAvatar(
+                radius: 25.0,
+                backgroundImage: NetworkImage(item.casts[0].avatars?.medium),
+                backgroundColor: Colors.white,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Text(item.title),
+              ),
+              Expanded(
+                child: Align(
+                  child: Icon(
+                    Icons.more_horiz,
+                    color: Colors.grey,
+                    size: 18.0,
+                  ),
+                  alignment: Alignment.centerRight,
+                ),
+              )
+            ],
+          ),
+          Expanded(
+              child: Container(
+            child: Container(),
+          )),
+          Padding(
+            padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Image.asset(
+                  Constant.ASSETS_IMG + 'ic_vote.png',
+                  width: 25.0,
+                  height: 25.0,
+                ),
+                Image.asset(
+                  Constant.ASSETS_IMG +
+                      'ic_notification_tv_calendar_comments.png',
+                  width: 20.0,
+                  height: 20.0,
+                ),
+                Image.asset(
+                  Constant.ASSETS_IMG + 'ic_status_detail_reshare_icon.png',
+                  width: 25.0,
+                  height: 25.0,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
