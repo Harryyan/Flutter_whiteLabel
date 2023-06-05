@@ -4,6 +4,8 @@ import 'package:white_label_project/models/home_entity.dart';
 import '../../../constant/constant.dart';
 import '../../../data_source/API.dart';
 import '../../../data_source/mock_request.dart';
+import '../../../widgets/radius_img.dart';
+import '../../../widgets/video_widget.dart';
 
 class TabContainer extends StatefulWidget {
   final String name;
@@ -65,36 +67,50 @@ class _TabContainerState extends State<TabContainer> {
   double singleLineImgHeight = 180.0;
   double contentVideoHeight = 350.0;
 
-  // _getItemCenterImg(Movie item) {
-  //   return Row(
-  //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-  //     children: <Widget>[
-  //       Expanded(
-  //         child: RadiusImg.get(item.images.large, null,
-  //             shape: RoundedRectangleBorder(
-  //               borderRadius: BorderRadius.only(
-  //                   topLeft: Radius.circular(5.0),
-  //                   bottomLeft: Radius.circular(5.0)),
-  //             )),
-  //       ),
-  //       Expanded(
-  //         child: RadiusImg.get(item.casts[1].avatars.medium, null, radius: 0.0),
-  //       ),
-  //       Expanded(
-  //         child: RadiusImg.get(item.casts[2].avatars.medium, null,
-  //             shape: RoundedRectangleBorder(
-  //                 borderRadius: BorderRadius.only(
-  //                     topRight: Radius.circular(5.0),
-  //                     bottomRight: Radius.circular(5.0)))),
-  //       )
-  //     ],
-  //   );
-  // }
+  _getItemCenterImg(Movie item) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: <Widget>[
+        Expanded(
+          child: RadiusImg.get(item.images?.large, null,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(5.0),
+                    bottomLeft: Radius.circular(5.0)),
+              )),
+        ),
+        Expanded(
+          child:
+              RadiusImg.get(item.casts[1].avatars?.medium, null, radius: 0.0),
+        ),
+        Expanded(
+          child: RadiusImg.get(item.casts[2].avatars?.medium, null,
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(5.0),
+                      bottomRight: Radius.circular(5.0)))),
+        )
+      ],
+    );
+  }
+
+  _getContentVideo(int index) {
+    if (!mounted) {
+      return Container();
+    }
+    return VideoWidget(
+      index == 1 ? Constant.URL_MP4_DEMO_0 : Constant.URL_MP4_DEMO_1,
+      showProgressBar: false,
+      previewImgUrl: '',
+    );
+  }
 
   Widget _getContent(List<Movie> items, int index) {
     Movie item = items[index];
+    bool showVideo = index == 1 || index == 3;
+
     return Container(
-      height: singleLineImgHeight,
+      height: showVideo ? contentVideoHeight : singleLineImgHeight,
       color: Colors.white,
       margin: const EdgeInsets.only(bottom: 10.0),
       padding: const EdgeInsets.only(
@@ -116,40 +132,41 @@ class _TabContainerState extends State<TabContainer> {
                 padding: const EdgeInsets.only(left: 10.0),
                 child: Text(item.title),
               ),
-              Expanded(
+              const Expanded(
                 child: Align(
+                  alignment: Alignment.centerRight,
                   child: Icon(
                     Icons.more_horiz,
                     color: Colors.grey,
                     size: 18.0,
                   ),
-                  alignment: Alignment.centerRight,
                 ),
               )
             ],
           ),
           Expanded(
-              child: Container(
-            child: Container(),
-          )),
+            child: Container(
+                child: showVideo
+                    ? _getContentVideo(index)
+                    : _getItemCenterImg(item)),
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Image.asset(
-                  Constant.ASSETS_IMG + 'ic_vote.png',
+                  '${Constant.ASSETS_IMG}ic_vote.png',
                   width: 25.0,
                   height: 25.0,
                 ),
                 Image.asset(
-                  Constant.ASSETS_IMG +
-                      'ic_notification_tv_calendar_comments.png',
+                  '${Constant.ASSETS_IMG}ic_notification_tv_calendar_comments.png',
                   width: 20.0,
                   height: 20.0,
                 ),
                 Image.asset(
-                  Constant.ASSETS_IMG + 'ic_status_detail_reshare_icon.png',
+                  '${Constant.ASSETS_IMG}ic_status_detail_reshare_icon.png',
                   width: 25.0,
                   height: 25.0,
                 ),
