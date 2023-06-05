@@ -4,7 +4,6 @@ import 'package:white_label_project/models/home_entity.dart';
 import '../../../constant/constant.dart';
 import '../../../data_source/API.dart';
 import '../../../data_source/mock_request.dart';
-import '../../../models/subject_entity.dart';
 
 class TabContainer extends StatefulWidget {
   final String name;
@@ -56,7 +55,7 @@ class _TabContainerState extends State<TabContainer> {
 
   void fetchAllMovies() async {
     var request = MockRequest();
-    var result = await request.get(API.TOP_250);
+    var result = await request.get(API.HOME_PAGE);
     var resultList = result['subjects'];
     list = resultList.map<Movie>((item) => Movie.fromMap(item)).toList();
 

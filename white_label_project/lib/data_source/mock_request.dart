@@ -15,13 +15,13 @@ class MockRequest {
   }
 
   Future<dynamic> mock({required String action, Map? params}) async {
-    var responseStr = await rootBundle.loadString('mock/$action.json');
+    var responseStr = await rootBundle.loadString('fake_data/$action.json');
     var responseJson = json.decode(responseStr);
     return responseJson;
   }
 
   Future<dynamic> mock2(String action) async {
-    var responseStr = await rootBundle.loadString('mock/$action.json');
+    var responseStr = await rootBundle.loadString('fake_data/$action.json');
     var responseJson = json.decode(responseStr);
     return responseJson;
   }
@@ -29,7 +29,7 @@ class MockRequest {
   Map<String, String> map = {
     API.IN_THEATERS: 'in_theaters',
     API.COMING_SOON: 'coming_soon',
-    API.TOP_250: 'top250',
+    API.HOME_PAGE: 'home_page',
     API.WEEKLY: 'weekly',
     API.REIVIEWS: 'reviews',
   };

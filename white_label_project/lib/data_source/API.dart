@@ -10,7 +10,7 @@ class API {
   static const String ALL_MOVIES = '/q.json';
 
   ///TOP250
-  static const String TOP_250 = '/v2/movie/top250';
+  static const String HOME_PAGE = '/v2/movie/top250';
 
   ///正在热映
   static const String IN_THEATERS =
