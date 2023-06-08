@@ -12,6 +12,7 @@ class VideoWidget extends StatefulWidget {
   final String previewImgUrl;
   final bool showProgressBar;
   final bool showProgressText;
+
   VideoWidget(this.url,
       {Key? key,
       required this.previewImgUrl,
@@ -188,7 +189,7 @@ class _VideoWidgetState extends State<VideoWidget> {
           //初始化完成后，更新状态
           setState(() {});
           if (_controller.value.duration == _controller.value.position) {
-            _controller.seekTo(Duration(seconds: 0));
+            _controller.seekTo(const Duration(seconds: 0));
             setState(() {});
           }
         });
