@@ -151,24 +151,58 @@ class _TabContainerState extends State<TabContainer> {
                     : _getItemCenterImg(item)),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+            padding: EdgeInsets.only(
+                left: 15.0, top: showVideo ? 10 : 0, right: 15.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Image.asset(
-                  '${Constant.ASSETS_IMG}ic_vote.png',
-                  width: 25.0,
-                  height: 25.0,
+                Row(
+                  children: [
+                    Image.asset(
+                      '${Constant.ASSETS_IMG}ic_vote.png',
+                      width: 25.0,
+                      height: 25.0,
+                    ),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                    const Text(
+                      '3',
+                      style: TextStyle(color: Colors.grey),
+                    )
+                  ],
                 ),
-                Image.asset(
-                  '${Constant.ASSETS_IMG}ic_notification_tv_calendar_comments.png',
-                  width: 20.0,
-                  height: 20.0,
+                Row(
+                  children: [
+                    Image.asset(
+                      '${Constant.ASSETS_IMG}ic_notification_tv_calendar_comments.png',
+                      width: 20.0,
+                      height: 20.0,
+                    ),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    const Text(
+                      '10',
+                      style: TextStyle(color: Colors.grey),
+                    )
+                  ],
                 ),
-                Image.asset(
-                  '${Constant.ASSETS_IMG}ic_status_detail_reshare_icon.png',
-                  width: 25.0,
-                  height: 25.0,
+                Row(
+                  children: [
+                    Image.asset(
+                      '${Constant.ASSETS_IMG}ic_status_detail_reshare_icon.png',
+                      width: 25.0,
+                      height: 25.0,
+                    ),
+                    const SizedBox(
+                      width: 3,
+                    ),
+                    const Text(
+                      '5',
+                      style: TextStyle(color: Colors.grey),
+                    )
+                  ],
                 ),
               ],
             ),
