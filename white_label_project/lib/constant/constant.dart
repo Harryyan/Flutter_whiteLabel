@@ -1,19 +1,26 @@
 class Constant {
   static const double MARGIN_LEFT = 13.0;
+  // ignore: constant_identifier_names
   static const double MARGIN_RIGHT = 13.0;
 
+  // ignore: constant_identifier_names
   static const String BASE_URL = 'api.douban.com';
 
+  // ignore: constant_identifier_names
   static const String TOP_250 = '/v2/movie/top250';
 
+  // ignore: constant_identifier_names
   static const String IMG_TMP1 =
       'https://upload-images.jianshu.io/upload_images/3884536-b21bfc556ffcc062.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240';
 
+  // ignore: constant_identifier_names
   static const String IMG_TMP2 =
       'https://upload-images.jianshu.io/upload_images/3884536-bb35459fd52009d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240';
 
+  // ignore: constant_identifier_names
   static const String ASSETS_IMG = 'assets/images/';
 
+  // ignore: constant_identifier_names
   static const double TAB_BOTTOM = 8.0;
 
   static String URL_MP4_DEMO_0 =
