@@ -32,6 +32,10 @@ class _TabContainerState extends State<TabContainer> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.name == 'Tab1') {
+      return _loginContainer(context);
+    }
+
     return SafeArea(
       top: false,
       bottom: false,
@@ -102,6 +106,44 @@ class _TabContainerState extends State<TabContainer> {
       index == 1 ? Constant.URL_MP4_DEMO_0 : Constant.URL_MP4_DEMO_1,
       showProgressBar: false,
       previewImgUrl: '',
+    );
+  }
+
+  _loginContainer(BuildContext context) {
+    return Align(
+      alignment: const Alignment(0.0, 0.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Image.asset(
+            '${Constant.ASSETS_IMG}ic_new_empty_view_default.png',
+            width: 120.0,
+          ),
+          const Padding(
+            padding: EdgeInsets.only(top: 15.0, bottom: 25.0),
+            child: Text(
+              '登录后查看关注人动态',
+              style: TextStyle(fontSize: 16.0, color: Colors.grey),
+            ),
+          ),
+          GestureDetector(
+            child: Container(
+              padding: const EdgeInsets.only(
+                  left: 35.0, right: 35.0, top: 8.0, bottom: 8.0),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.green),
+                  borderRadius: const BorderRadius.all(Radius.circular(6.0))),
+              child: const Text(
+                '去登录',
+                style: TextStyle(fontSize: 16.0, color: Colors.green),
+              ),
+            ),
+            onTap: () {
+              // MyRouter.push(context, MyRouter.searchPage, '...');
+            },
+          )
+        ],
+      ),
     );
   }
 
