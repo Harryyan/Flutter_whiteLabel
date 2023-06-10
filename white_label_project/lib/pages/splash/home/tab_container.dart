@@ -122,7 +122,7 @@ class _TabContainerState extends State<TabContainer> {
           const Padding(
             padding: EdgeInsets.only(top: 15.0, bottom: 25.0),
             child: Text(
-              '登录后查看关注人动态',
+              'Login and Check',
               style: TextStyle(fontSize: 16.0, color: Colors.grey),
             ),
           ),
@@ -131,11 +131,11 @@ class _TabContainerState extends State<TabContainer> {
               padding: const EdgeInsets.only(
                   left: 35.0, right: 35.0, top: 8.0, bottom: 8.0),
               decoration: BoxDecoration(
-                  border: Border.all(color: Colors.green),
+                  border: Border.all(color: Colors.blue),
                   borderRadius: const BorderRadius.all(Radius.circular(6.0))),
               child: const Text(
-                '去登录',
-                style: TextStyle(fontSize: 16.0, color: Colors.green),
+                'Login',
+                style: TextStyle(fontSize: 16.0, color: Colors.blue),
               ),
             ),
             onTap: () {

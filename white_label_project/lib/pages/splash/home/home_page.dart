@@ -33,10 +33,11 @@ class _HomePageState extends State<HomePage> {
               handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
               sliver: SliverAppBar(
                 pinned: true,
+                floating: true,
                 expandedHeight: 120.0,
                 primary: true,
                 titleSpacing: 0.0,
-                backgroundColor: Colors.white,
+                backgroundColor: Colors.blue,
                 flexibleSpace: FlexibleSpaceBar(
                   collapseMode: CollapseMode.pin,
                   background: Container(
