@@ -5,7 +5,8 @@ class HomePageTabBar extends StatefulWidget {
   TabController tabController;
   List<Widget> tabs;
 
-  HomePageTabBar(Key key, this.tabController, this.tabs) : super(key: key);
+  HomePageTabBar({Key? key, required this.tabController, required this.tabs})
+      : super(key: key);
 
   @override
   State<HomePageTabBar> createState() => _HomePageTabBarState();
