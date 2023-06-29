@@ -38,4 +38,8 @@ class _MediaPageState extends State<MediaPage>
   Widget build(BuildContext context) {
     return Container();
   }
+
+  Widget _getNestedScrollView(Widget tabBar) {
+    String hintText = 'This is hint';
+  }
 }
