@@ -40,35 +40,36 @@ class _MediaPageState extends State<MediaPage>
   }
 
   Widget _getNestedScrollView(Widget tabBar) {
-    String hintText = 'This is hint';
+    // String hintText = 'This is hint';
+    return Container();
 
-    return NestedScrollView(
-        headerSliverBuilder: (context, innerBoxIsScrolled) {
-          return <Widget>[
-            SliverToBoxAdapter(
-              child: Container(
-                color: Colors.white,
-                padding: const EdgeInsets.all(10.0),
-                child: SearchTextFieldWidget(
-                  hintText: hintText,
-                  onTab: () {
-                    // MyRouter.push(context, MyRouter.searchPage, hintText);
-                  },
-                ),
-              ),
-            ),
-            SliverPersistentHeader(
-                floating: true,
-                pinned: true,
-                delegate: _SliverAppBarDelegate(
-                    maxHeight: 49.0,
-                    minHeight: 49.0,
-                    child: Container(
-                      color: Colors.white,
-                      child: tabBar,
-                    )))
-          ];
-        },
-        body: Container());
+    // return NestedScrollView(
+    //     headerSliverBuilder: (context, innerBoxIsScrolled) {
+    //       return <Widget>[
+    //         SliverToBoxAdapter(
+    //           child: Container(
+    //             color: Colors.white,
+    //             padding: const EdgeInsets.all(10.0),
+    //             child: SearchTextFieldWidget(
+    //               hintText: hintText,
+    //               onTab: () {
+    //                 // MyRouter.push(context, MyRouter.searchPage, hintText);
+    //               },
+    //             ),
+    //           ),
+    //         ),
+    //         SliverPersistentHeader(
+    //             floating: true,
+    //             pinned: true,
+    //             delegate: _SliverAppBarDelegate(
+    //                 maxHeight: 49.0,
+    //                 minHeight: 49.0,
+    //                 child: Container(
+    //                   color: Colors.white,
+    //                   child: tabBar,
+    //                 )))
+    //       ];
+    //     },
+    //     body: Container());
   }
 }
